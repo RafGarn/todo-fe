@@ -6,18 +6,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target BUILD .'
+                sh "DOCKER_BUILDKIT=1 docker build -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target BUILD ."
             }
         }
         stage('Test') {
             steps {
-            	sh 'DOCKER_BUILDKIT=1 docker build -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target TEST .'
+            	sh "DOCKER_BUILDKIT=1 docker build -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target TEST ."
 
             }
         }
         stage('Delivery artifact') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target DELIVERY .'
+                sh "DOCKER_BUILDKIT=1 docker build -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target DELIVERY ."
             }
         }
         stage('Cleanup') {
