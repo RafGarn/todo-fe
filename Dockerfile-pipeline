@@ -1,0 +1,20 @@
+FROM node:14-alpine as BUILD 
+WORKDIR /app
+ENV PATH=/app/node_modules/.bin:$PATH
+COPY *.json /app/
+RUN npm install
+
+FROM node:14-alpine as TEST 
+WORKDIR /app
+ENV PATH=/app/node_modules/.bin:$PATH
+COPY --from=BUILD /app/node_modules/ ./node_modules/
+COPY . .
+ENV CI=true
+RUN npm test || true
+
+FROM node:14-alpine as DELIVERY
+WORKDIR /app
+ENV PATH=/app/node_modules/.bin:$PATH
+COPY --from=BUILD /app/node_modules/ ./node_modules/
+COPY . . 
+CMD ["npm","start"]
