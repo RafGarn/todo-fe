@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    //environment {     
-    //DOCKERHUB_CRE=credentials('dockerhub credentials')
-    //} 
+    environment {     
+    DOCKERHUB_CRE=credentials('dockerhub credentials')
+    } 
     stages {
         stage('Build') {
             steps {
@@ -32,9 +32,9 @@ pipeline {
         stage('Push') {
             steps {
             	sh "echo 'Pushing image to dockerhub'"
-                //sh "sudo docker login -u ${DOCKERHUB_CRE} -p ${DOCKERHUB_CRE_PSW}"
-                //sh 'sudo docker push rafaelagar/todo-fe'
-                //sh 'docker logout' 
+                sh "sudo docker login -u ${DOCKERHUB_CRE} -p ${DOCKERHUB_CRE_PSW}"
+                sh 'sudo docker push rafaelagar/todo-fe'
+                sh 'docker logout' 
             }
         }
     }
