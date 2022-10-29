@@ -31,7 +31,7 @@ pipeline {
 
         stage('Push') {
             steps {
-            	echo 'Pushing image to dockerhub'
+            	sh "echo 'Pushing image to dockerhub'"
                 sh "sudo docker login -u ${DOCKERHUB_CRE} -p ${DOCKERHUB_CRE_PSW}"
                 sh 'sudo docker push rafaelagar/todo-fe'
                 sh 'docker logout' 
