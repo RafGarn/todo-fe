@@ -13,13 +13,13 @@ pipeline {
         stage('Test') {
             steps {
                 sh "echo 'This is a test stage'"
-            	sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target TEST ."
+            	sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} --target TEST ."
 
             }
         }
         stage('Delivery artifact') {
             steps {
-                sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target DELIVERY ."
+                sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} --target DELIVERY ."
             }
         }
         stage('Cleanup') {
