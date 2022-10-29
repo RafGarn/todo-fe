@@ -21,7 +21,7 @@
       And now you can check if the todo application is up and running in your browser:
       
         
-        http://localhost:3000
+         http://localhost:3000
     * The docker-compose.yaml file contains the images you've pushed to the Dockerhub and also pulls the mongodb image.
      
   
