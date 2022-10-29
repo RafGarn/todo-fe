@@ -9,7 +9,7 @@
   
         Otherwise comment the environment and the 'Push' stage.
    
-        Same is with todo-be (backend). 
+        Same is with todo-be (backend): https://github.com/RafGarn/todo-be
 * After running both frontend and backend pipelines:
    * Now you can combine it all together and run on your local machine the commend: 
    
