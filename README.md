@@ -1,9 +1,25 @@
 # todo-fe
-* Pipeline-
+* Pipeline (Jenkinsfile)-
 
-  In order to run the pipeline which pushes the frontend image to Dockerhub, you will need to add the credentials on your jenkins locally:
-
-  Dashboard > Manage Jenkins > Credentials.
-   Otherwise comment the environment and the 'Push' stage.
+   * This is a containerized pipeline which uses Dockerfile-pipeline to build the image, and contains the stages:  Build, Test, Delivery, Cleanup and Push (to Dockerhub).
   
- * This is a containerized pipeline which uses Dockerfile-pipeline to build the image, and contains the stages: Build, Test, Delivery, Cleanup and Push(to Dockerhub).
+        In order to run the pipeline which pushes the frontend image to Dockerhub, you will need to add the credentials on your jenkins locally:
+
+        Dashboard > Manage Jenkins > Credentials.
+  
+        Otherwise comment the environment and the 'Push' stage.
+   
+        Same is with todo-be (backend). 
+* After running both frontend and backend pipelines:
+   * Now you can combine it all together and run on your local machine the commend: 
+   
+         docker-compose up -d .
+     To see all the containers that are up now: 
+     
+         docker compose ps
+         
+      And now you can check if the todo application is up and running in your browser:
+      
+         http://localhost:3000
+  
+ 
