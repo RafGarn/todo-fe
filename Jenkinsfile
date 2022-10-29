@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "echo 'This is a build step'"
-                sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:latest --target BUILD"
+                sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} --target BUILD"
             }
         }
         stage('Test') {
