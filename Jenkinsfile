@@ -7,19 +7,19 @@ pipeline {
         stage('Build') {
             steps {
                 sh "echo 'This is a build step'"
-                sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} --target BUILD"
+                sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} --target BUILD ."
             }
         }
         stage('Test') {
             steps {
                 sh "echo 'This is a test stage'"
-            	sh "DOCKER_BUILDKIT=1 docker build -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target TEST -f Dockerfile-pipeline"
+            	sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target TEST ."
 
             }
         }
         stage('Delivery artifact') {
             steps {
-                sh "DOCKER_BUILDKIT=1 docker build -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target DELIVERY -f Dockerfile-pipeline"
+                sh "DOCKER_BUILDKIT=1 docker build -f Dockerfile-pipeline -t rafaelagar/todo-fe:jenkins-${env.BUILD_ID} -t rafaelagar/todo-fe:latest --target DELIVERY ."
             }
         }
         stage('Cleanup') {
