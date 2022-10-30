@@ -31,9 +31,11 @@ pipeline {
 
         stage('Push') {
             steps {
-            	sh "echo 'Pushing image to dockerhub'"
+            	sh "echo 'tagging image as latest'"
+                sh "docker image tag rafaelagar/todo-fe:jenkins-${env.BUILD_ID} rafaelagar/todo-fe:latest"
+                sh "echo 'Pushing image to dockerhub'"
                 sh "sudo docker login -u ${DOCKERHUB_CRE} -p ${DOCKERHUB_CRE_PSW}"
-                sh 'sudo docker push rafaelagar/todo-fe'
+                sh 'sudo docker image push --all-tags rafaelagar/todo-fe'
                 sh 'docker logout' 
             }
         }
