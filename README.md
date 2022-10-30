@@ -22,7 +22,7 @@
       
         
          http://localhost:3000
-    * The docker-compose.yaml file contains the images you've pushed to the Dockerhub and also pulls the mongodb image.
+    * The docker-compose.yaml file contains the images you've created and pushed to the Dockerhub and also pulls the mongodb image.
      
   
  
